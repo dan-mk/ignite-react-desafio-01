@@ -6,13 +6,18 @@ import { Task } from '../App';
 type TaskProps = {
     task: Task;
     onToggleTaskStatus: (t: Task) => void;
+    onDeleteTask: (t: Task) => void;
 };
 
-export function TaskComponent({ task, onToggleTaskStatus }: TaskProps) {
+export function TaskComponent({ task, onToggleTaskStatus, onDeleteTask }: TaskProps) {
     const { content, isComplete } = task;
 
     function handleChangeTaskStatus() {
         onToggleTaskStatus(task);
+    }
+
+    function handleDeleteTask() {
+        onDeleteTask(task);
     }
 
     return (
@@ -35,7 +40,7 @@ export function TaskComponent({ task, onToggleTaskStatus }: TaskProps) {
                 <p>{content}</p>
             </div>
             <div>
-                <button className={styles.deleteButton}>
+                <button className={styles.deleteButton} onClick={handleDeleteTask}>
                     <img
                         src={trash}
                         className={styles.deleteIcon}

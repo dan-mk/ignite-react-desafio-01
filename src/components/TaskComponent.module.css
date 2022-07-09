@@ -54,6 +54,7 @@ input[type="checkbox"] {
 .checkbox img {
     display: none;
     margin-top: 0.1rem;
+    width: 0.8rem;
 }
 
 .completeCheckbox {
@@ -77,4 +78,5 @@ input[type="checkbox"]:checked + img {
 
 .deleteIcon {
     display: block;
+    width: 0.875rem;
 }

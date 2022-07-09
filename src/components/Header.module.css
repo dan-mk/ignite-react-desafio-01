@@ -11,6 +11,11 @@
     font-weight: 900;
 }
 
+.title img {
+    margin-bottom: -0.4rem;
+    width: 1.4rem;
+}
+
 .to {
     color: var(--blue-300);
 }

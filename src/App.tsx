@@ -38,12 +38,22 @@ export function App() {
     })
   }
 
+  function deleteTask(targetTask: Task) {
+    setTasks((state) => {
+      return state.filter((task) => task.id !== targetTask.id);
+    });
+  }
+
   return (
     <>
       <Header />
       <div className="wrapper">
         <TaskForm onAddNewTask={addNewTask} />
-        <TaskListing tasks={tasks} onToggleTaskStatus={toggleTaskStatus} />
+        <TaskListing
+          tasks={tasks}
+          onToggleTaskStatus={toggleTaskStatus}
+          onDeleteTask={deleteTask}
+        />
       </div>
     </>
   )

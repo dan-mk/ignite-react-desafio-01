@@ -6,7 +6,6 @@
 
 html, input, button, textarea {
     font-family: 'Inter', sans-serif;
-    font-size: 100%;
 }
 
 :root {
@@ -21,7 +20,7 @@ html, input, button, textarea {
     --blue-500: #1E6F9F;
     --purple-500: #5E60CE;
 
-    --border-radius: 8px;
+    --border-radius: 0.5rem;
 }
 
 body {

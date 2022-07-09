@@ -7,9 +7,10 @@ import { Task } from "../App";
 type TaskListingProps = {
     tasks: Task[];
     onToggleTaskStatus: (t: Task) => void;
+    onDeleteTask: (t: Task) => void;
 };
 
-export function TaskListing({ tasks, onToggleTaskStatus }: TaskListingProps) {
+export function TaskListing({ tasks, onToggleTaskStatus, onDeleteTask }: TaskListingProps) {
     const isTaskListEmpty = (tasks.length === 0);
     return (
         <div className={styles.container}>
@@ -30,6 +31,7 @@ export function TaskListing({ tasks, onToggleTaskStatus }: TaskListingProps) {
                                 key={task.id}
                                 task={task}
                                 onToggleTaskStatus={onToggleTaskStatus}
+                                onDeleteTask={onDeleteTask}
                             />
                         );
                     })}
