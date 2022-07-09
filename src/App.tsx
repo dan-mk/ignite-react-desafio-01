@@ -17,8 +17,8 @@ export function App() {
   function addNewTask(content: string) {
     setTasks((state) => {
       return [
-        ...state.map((task) => ({ ...task })),
-        { id: uuidv4(), content, isComplete: false }
+        { id: uuidv4(), content, isComplete: false },
+        ...state.map((task) => ({ ...task }))
       ]
     });
   }
