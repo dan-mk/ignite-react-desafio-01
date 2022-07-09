@@ -14,3 +14,9 @@
     text-align: center;
     padding: 4rem 0;
 }
+
+.tasksContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}

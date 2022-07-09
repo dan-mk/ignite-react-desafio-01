@@ -1,18 +1,19 @@
 import { TaskListingHeader } from "./TaskListingHeader";
+import { Task } from "./Task";
 import styles from './TaskListing.module.css';
 import clipboard from '../assets/clipboard.svg';
 
 const tasks = [
-    // {
-    //     id: 1,
-    //     content: 'Something',
-    //     isComplete: true,
-    // },
-    // {
-    //     id: 2,
-    //     content: 'Something else',
-    //     isComplete: false,
-    // }
+    {
+        id: 1,
+        content: 'Something',
+        isComplete: true,
+    },
+    {
+        id: 2,
+        content: 'Something else',
+        isComplete: false,
+    }
 ];
 
 export function TaskListing() {
@@ -29,7 +30,11 @@ export function TaskListing() {
                     </div>
                 </div>
                 :
-                <div>Listing</div>
+                <div className={styles.tasksContainer}>
+                    {tasks.map((task) => {
+                        return <Task key={task.id} />;
+                    })}
+                </div>
             }
         </div>
     );
