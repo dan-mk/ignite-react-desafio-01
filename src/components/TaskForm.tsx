@@ -9,7 +9,11 @@ export function TaskForm() {
                 type="text"
                 placeholder="Adicione uma nova tarefa"
             />
-            <button className={styles.button} title="Criar nova tarefa">
+            <button
+                type="submit"
+                className={styles.button}
+                title="Criar nova tarefa"
+            >
                 <span>Criar</span>
                 <img src={plusCircle} />
             </button>

@@ -17,6 +17,7 @@
     flex-grow: 1;
     line-height: calc(var(--component-height) - 0.5rem);
     height: var(--component-height);
+    min-width: 0;
     padding: 0.25rem 1rem;
 }
 
