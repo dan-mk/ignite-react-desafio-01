@@ -6,13 +6,14 @@ import { Task } from "../App";
 
 type TaskListingProps = {
     tasks: Task[];
+    onToggleTaskStatus: (t: Task) => void;
 };
 
-export function TaskListing({ tasks }: TaskListingProps) {
+export function TaskListing({ tasks, onToggleTaskStatus }: TaskListingProps) {
     const isTaskListEmpty = (tasks.length === 0);
     return (
         <div className={styles.container}>
-            <TaskListingHeader />
+            <TaskListingHeader tasks={tasks} />
             {isTaskListEmpty ?
                 <div className={styles.emptyListingContainer}>
                     <img src={clipboard} />
@@ -24,7 +25,13 @@ export function TaskListing({ tasks }: TaskListingProps) {
                 :
                 <div className={styles.tasksContainer}>
                     {tasks.map((task) => {
-                        return <TaskComponent key={task.id} task={task} />;
+                        return (
+                            <TaskComponent
+                                key={task.id}
+                                task={task}
+                                onToggleTaskStatus={onToggleTaskStatus}
+                            />
+                        );
                     })}
                 </div>
             }

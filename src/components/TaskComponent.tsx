@@ -5,20 +5,33 @@ import { Task } from '../App';
 
 type TaskProps = {
     task: Task;
+    onToggleTaskStatus: (t: Task) => void;
 };
 
-export function TaskComponent({ task }: TaskProps) {
+export function TaskComponent({ task, onToggleTaskStatus }: TaskProps) {
     const { content, isComplete } = task;
+
+    function handleChangeTaskStatus() {
+        onToggleTaskStatus(task);
+    }
 
     return (
         <div className={styles.container}>
             <div className={styles.checkboxContainer}>
-                <input checked={isComplete} id="checkbox" type="checkbox" />
-                <label className={styles.checkbox}>
+                <label className={
+                    `${styles.checkbox} ${isComplete ? styles.completeCheckbox : ''}`
+                }>
+                    <input
+                        checked={isComplete}
+                        onChange={handleChangeTaskStatus}
+                        type="checkbox"
+                    />
                     <img src={check} title="TODO" />
                 </label>
             </div>
-            <div className={styles.contentContainer}>
+            <div className={
+                `${styles.contentContainer} ${isComplete ? styles.completeContent : ''}`
+            }>
                 <p>{content}</p>
             </div>
             <div>

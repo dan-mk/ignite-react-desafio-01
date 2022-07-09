@@ -1,6 +1,16 @@
+import { Task } from '../App';
 import styles from './TaskListingHeader.module.css';
 
-export function TaskListingHeader() {
+type TaskListingHeaderProps = {
+    tasks: Task[],
+};
+
+export function TaskListingHeader({ tasks }: TaskListingHeaderProps) {
+    const numberOfTasks = tasks.length;
+    const numberOfCompleteTasks = tasks.reduce((sum, task) => {
+        return sum + (task.isComplete ? 1 : 0);
+    }, 0);
+
     return (
         <header className={styles.container}>
             <div>
@@ -8,7 +18,7 @@ export function TaskListingHeader() {
                     Tarefas criadas
                 </span>
                 <strong className={styles.numberOfTasksLabel}>
-                    0
+                    {numberOfTasks}
                 </strong>
             </div>
             <div>
@@ -16,7 +26,7 @@ export function TaskListingHeader() {
                     Concluídas
                 </span>
                 <strong className={styles.numberOfTasksLabel}>
-                    0
+                    {numberOfTasks === 0 ? 0 : `${numberOfCompleteTasks} de ${numberOfTasks}`}
                 </strong>
             </div>
         </header>

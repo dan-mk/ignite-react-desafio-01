@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Header } from './components/Header';
 import { TaskForm } from './components/TaskForm';
 import { TaskListing } from './components/TaskListing';
@@ -11,26 +12,30 @@ export type Task = {
 };
 
 export function App() {
-  const [tasks, setTasks] = useState<Task[]>([
-    {
-      id: '1',
-      content: 'AAAAAAAAAHAhushuashduashd',
-      isComplete: false,
-    },
-    {
-      id: '2',
-      content: 'This is soooo big that it may not fit in the space it has, but then it needs to be even bigger than this',
-      isComplete: true,
-    }
-  ]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   function addNewTask(content: string) {
     setTasks((state) => {
       return [
         ...state.map((task) => ({ ...task })),
-        { id: '3', content, isComplete: false }
+        { id: uuidv4(), content, isComplete: false }
       ]
     });
+  }
+
+  function toggleTaskStatus(targetTask: Task) {
+    setTasks((state) => {
+      return state.map((task) => {
+        const newIsCompleteValue = (
+          (task.id === targetTask.id) ? !task.isComplete : task.isComplete
+        );
+
+        return {
+          ...task,
+          isComplete: newIsCompleteValue,
+        }
+      });
+    })
   }
 
   return (
@@ -38,7 +43,7 @@ export function App() {
       <Header />
       <div className="wrapper">
         <TaskForm onAddNewTask={addNewTask} />
-        <TaskListing tasks={tasks} />
+        <TaskListing tasks={tasks} onToggleTaskStatus={toggleTaskStatus} />
       </div>
     </>
   )
