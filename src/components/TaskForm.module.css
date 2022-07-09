@@ -1,0 +1,51 @@
+:root {
+    --component-height: 3.375rem;
+}
+
+.container {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: calc(-1 * var(--component-height) / 2);
+}
+
+.input {
+    border: 1px solid var(--gray-700);
+    border-radius: var(--border-radius);
+    background: var(--gray-500);
+    caret-color: white;
+    color: white;
+    flex-grow: 1;
+    line-height: calc(var(--component-height) - 0.5rem);
+    height: var(--component-height);
+    padding: 0.25rem 1rem;
+}
+
+.input::placeholder {
+    color: var(--gray-300);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--purple-500);
+}
+
+.button {
+    background: var(--blue-500);
+    border: 0;
+    border-radius: var(--border-radius);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: var(--component-height);
+    height: var(--component-height);
+    padding: 0 1rem;
+    transition: background-color 0.15s;
+}
+
+.button:hover:not(:disabled) {
+    background: var(--blue-300);
+}
