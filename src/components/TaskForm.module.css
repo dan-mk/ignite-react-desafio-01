@@ -35,7 +35,6 @@
     border: 0;
     border-radius: var(--border-radius);
     color: white;
-    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -49,4 +48,14 @@
 
 .button:hover:not(:disabled) {
     background: var(--blue-300);
+    cursor: pointer;
+}
+
+.button:disabled {
+    background: var(--gray-400);
+    color: var(--gray-300);
+}
+
+.button:disabled img {
+    opacity: 0.4;
 }
