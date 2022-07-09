@@ -1,22 +1,14 @@
 import { TaskListingHeader } from "./TaskListingHeader";
-import { Task } from "./Task";
+import { TaskComponent } from "./TaskComponent";
 import styles from './TaskListing.module.css';
 import clipboard from '../assets/clipboard.svg';
+import { Task } from "../App";
 
-const tasks = [
-    {
-        id: 1,
-        content: 'Something',
-        isComplete: true,
-    },
-    {
-        id: 2,
-        content: 'Something else',
-        isComplete: false,
-    }
-];
+type TaskListingProps = {
+    tasks: Task[];
+};
 
-export function TaskListing() {
+export function TaskListing({ tasks }: TaskListingProps) {
     const isTaskListEmpty = (tasks.length === 0);
     return (
         <div className={styles.container}>
@@ -32,7 +24,7 @@ export function TaskListing() {
                 :
                 <div className={styles.tasksContainer}>
                     {tasks.map((task) => {
-                        return <Task key={task.id} />;
+                        return <TaskComponent key={task.id} task={task} />;
                     })}
                 </div>
             }

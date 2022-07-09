@@ -1,18 +1,25 @@
-import styles from './Task.module.css';
+import styles from './TaskComponent.module.css';
 import trash from '../assets/trash.svg';
 import check from '../assets/check.svg';
+import { Task } from '../App';
 
-export function Task() {
+type TaskProps = {
+    task: Task;
+};
+
+export function TaskComponent({ task }: TaskProps) {
+    const { content, isComplete } = task;
+
     return (
         <div className={styles.container}>
             <div className={styles.checkboxContainer}>
-                <input id="checkbox" type="checkbox" />
+                <input checked={isComplete} id="checkbox" type="checkbox" />
                 <label className={styles.checkbox}>
                     <img src={check} title="TODO" />
                 </label>
             </div>
             <div className={styles.contentContainer}>
-                <p>Something that is so big that will take more than one line to show so I need to keep going it's still not there</p>
+                <p>{content}</p>
             </div>
             <div>
                 <button className={styles.deleteButton}>
